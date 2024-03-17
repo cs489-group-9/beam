@@ -17,7 +17,7 @@
     under the License.
 -->
 
-# TensorRT Dockerfile for Beam
+# TensorRT Dockerfile for Beam (small change)
 
 This directory contains the Dockerfiles required to run Beam piplines that use TensorRT.
 
