@@ -16,8 +16,8 @@
 name: PerformanceTests SpannerIO Write 2GB Python Batch
 
 on:
-  schedule:
-    - cron: '30 11 * * *'
+  # schedule:
+    # cron: '30 11 * * *'
   workflow_dispatch:
 
 #Setting explicit permissions for the action to avoid the default permissions which are `write-all` in case of pull_request_target event

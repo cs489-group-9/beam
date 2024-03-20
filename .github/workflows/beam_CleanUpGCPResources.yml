@@ -18,8 +18,8 @@
 name: Clean Up GCP Resources
 
 on:
-  schedule:
-    - cron: '0 0,12 * * *'
+  # # schedule:
+  #   # cron: '0 0,12 * * *'
   workflow_dispatch:
 
 # This allows a subsequently queued workflow run to interrupt previous runs

@@ -16,8 +16,8 @@
 name: PerformanceTests ManyFiles TextIOIT HDFS
 
 on:
-  schedule:
-    - cron: '10 10/12 * * *'
+  # schedule:
+    # cron: '10 10/12 * * *'
   workflow_dispatch:
 
 #Setting explicit permissions for the action to avoid the default permissions which are `write-all` in case of pull_request_target event

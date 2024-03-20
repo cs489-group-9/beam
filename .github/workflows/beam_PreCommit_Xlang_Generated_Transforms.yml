@@ -42,8 +42,8 @@ on:
       - '.github/workflows/beam_PreCommit_Xlang_Generated_Transforms.yml'
   issue_comment:
     types: [created]
-  schedule:
-    - cron: '30 2/6 * * *'
+  # schedule:
+    # cron: '30 2/6 * * *'
   workflow_dispatch:
 
 #Setting explicit permissions for the action to avoid the default permissions which are `write-all` in case of pull_request_target event

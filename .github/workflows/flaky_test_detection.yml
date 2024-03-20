@@ -21,8 +21,8 @@ permissions:
   issues: write
 
 on:
-  schedule:
-    - cron: '30 */3 * * *'
+  # schedule:
+    # cron: '30 */3 * * *'
   workflow_dispatch:
     inputs:
       READ_ONLY:

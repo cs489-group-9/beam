@@ -18,8 +18,8 @@
 name: PostCommit Java PVR Spark3 Streaming
 
 on:
-  schedule:
-    - cron: '15 4/6 * * *'
+  # schedule:
+    # cron: '15 4/6 * * *'
   pull_request_target:
     paths: ['release/trigger_all_tests.json', '.github/trigger_files/beam_PostCommit_Java_PVR_Spark3_Streaming.json']
   workflow_dispatch:

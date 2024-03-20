@@ -16,8 +16,8 @@
 name: PostCommit Python Xlang IO Dataflow
 
 on:
-  schedule:
-    - cron: '30 5/6 * * *'
+  # schedule:
+    # cron: '30 5/6 * * *'
   pull_request_target:
     paths: ['release/trigger_all_tests.json', '.github/trigger_files/beam_PostCommit_Python_Xlang_IO_Dataflow.json']
   workflow_dispatch:

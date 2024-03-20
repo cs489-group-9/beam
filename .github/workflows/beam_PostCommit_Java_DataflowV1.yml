@@ -18,8 +18,8 @@
 name: PostCommit Java Dataflow V1
 
 on:
-  schedule:
-    - cron: '30 3/8 * * *'
+  # schedule:
+    # cron: '30 3/8 * * *'
   pull_request_target:
     paths: ['release/trigger_all_tests.json', '.github/trigger_files/beam_PostCommit_Java_DataflowV1.json']
   workflow_dispatch:

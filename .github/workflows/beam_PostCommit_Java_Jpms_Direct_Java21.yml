@@ -16,8 +16,8 @@
 name: PostCommit Java Jpms Direct Java21
 
 on:
-  schedule:
-  - cron: '0 */6 * * *'
+  # schedule:
+  # cron: '0 */6 * * *'
   pull_request_target:
     paths: ['release/trigger_all_tests.json', '.github/trigger_files/beam_PostCommit_Java_Jpms_Direct_Java21.json']
   workflow_dispatch:
