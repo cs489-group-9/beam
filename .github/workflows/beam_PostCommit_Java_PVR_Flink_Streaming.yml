@@ -18,8 +18,8 @@
 name: PostCommit Java PVR Flink Streaming
 
 on:
-  schedule:
-    - cron: '15 4/6 * * *'
+  # schedule:
+    # cron: '15 4/6 * * *'
   pull_request_target:
     paths: ['release/trigger_all_tests.json', '.github/trigger_files/beam_PostCommit_Java_PVR_Flink_Streaming.json']
   workflow_dispatch:

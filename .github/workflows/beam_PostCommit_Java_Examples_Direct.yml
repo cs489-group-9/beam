@@ -18,8 +18,8 @@
 name: PostCommit Java Examples Direct
 
 on:
-  schedule:
-    - cron: '45 3/6 * * *'
+  # schedule:
+    # cron: '45 3/6 * * *'
   pull_request_target:
     paths: ['release/trigger_all_tests.json', '.github/trigger_files/beam_PostCommit_Java_Examples_Direct.json']
   workflow_dispatch:

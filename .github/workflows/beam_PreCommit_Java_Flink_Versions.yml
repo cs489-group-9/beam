@@ -34,8 +34,8 @@ on:
       - '.github/trigger_files/beam_PreCommit_Java_Flink_Versions.json'
   issue_comment:
     types: [created]
-  schedule:
-  - cron: '30 1/6 * * *'
+  # schedule:
+  # cron: '30 1/6 * * *'
   workflow_dispatch:
 
 permissions:

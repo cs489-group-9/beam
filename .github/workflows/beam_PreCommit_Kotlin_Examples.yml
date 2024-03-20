@@ -42,8 +42,8 @@ on:
       - '.github/trigger_files/beam_PreCommit_Kotlin_Examples.json'
   issue_comment:
     types: [created]
-  schedule:
-    - cron: '30 2/6 * * *'
+  # schedule:
+    # cron: '30 2/6 * * *'
   workflow_dispatch:
 
 # This allows a subsequently queued workflow run to interrupt previous runs

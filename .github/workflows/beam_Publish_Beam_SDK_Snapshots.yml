@@ -16,8 +16,8 @@
 name: Publish Beam SDK Snapshots
 
 on:
-  schedule:
-    - cron: '0 */4 * * *'
+  # schedule:
+    # cron: '0 */4 * * *'
   workflow_dispatch:
 
 #Setting explicit permissions for the action to avoid the default permissions which are `write-all` in case of pull_request_target event
