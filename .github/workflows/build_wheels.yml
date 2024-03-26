@@ -103,7 +103,7 @@ jobs:
           OUTPUT=$( if  grep -e '-RC.' -q temp; then echo 1; else echo 0; fi)
           echo "is_rc=$OUTPUT" >> $GITHUB_OUTPUT
       - name: Get RELEASE_VERSION and RC_NUM
-        if: steps.is_rc.outputs.is_rc == 1
+        # if: steps.is_rc.outputs.is_rc == 1
         id: get_rc_version
         run: |
           RC_NUM=$(sed -n "s/^.*-RC\([0-9]*\)/\1/p" temp)
@@ -137,45 +137,45 @@ jobs:
           name: source_zip
           path: sdks/python/dist
       - name: Clear dist
-        if: steps.is_rc.outputs.is_rc == 1
+        # if: steps.is_rc.outputs.is_rc == 1
         working-directory: ./sdks/python
         run: |
           rm -r ./dist
           rm -rd apache-beam-source
       - name: Rewrite SDK version to include RC number
-        if: steps.is_rc.outputs.is_rc == 1
+        # if: steps.is_rc.outputs.is_rc == 1
         working-directory: ./sdks/python
         run: |
           RELEASE_VERSION=${{ steps.get_rc_version.outputs.RELEASE_VERSION }}
           RC_NUM=${{ steps.get_rc_version.outputs.RC_NUM }}
           sed -i -e "s/${RELEASE_VERSION}/${RELEASE_VERSION}rc${RC_NUM}/g" apache_beam/version.py
       - name: Build RC source
-        if: steps.is_rc.outputs.is_rc == 1
+        # if: steps.is_rc.outputs.is_rc == 1
         working-directory: ./sdks/python
         run: pip install -U build && python -m build --sdist
       - name: Add RC checksums
-        if: steps.is_rc.outputs.is_rc == 1
+        # if: steps.is_rc.outputs.is_rc == 1
         working-directory: ./sdks/python/dist
         run: |
           file=$(ls | grep .tar.gz | head -n 1)
           sha512sum $file > ${file}.sha512
       - name: Unzip RC source
-        if: steps.is_rc.outputs.is_rc == 1
+        # if: steps.is_rc.outputs.is_rc == 1
         working-directory: ./sdks/python
         run: tar -xzvf dist/$(ls dist | grep .tar.gz | head -n 1)
       - name: Rename RC source directory
-        if: steps.is_rc.outputs.is_rc == 1
+        # if: steps.is_rc.outputs.is_rc == 1
         working-directory: ./sdks/python
         run: mv $(ls | grep apache-beam) apache-beam-source-rc
       - name: Upload RC source as artifact
-        if: steps.is_rc.outputs.is_rc == 1
+        # if: steps.is_rc.outputs.is_rc == 1
         # Pinned to v3 because of https://github.com/actions/download-artifact/issues/249
         uses: actions/upload-artifact@v3
         with:
           name: source_rc${{ steps.get_rc_version.outputs.RC_NUM }}
           path: sdks/python/apache-beam-source-rc
       - name: Upload compressed RC sources as artifacts
-        if: steps.is_rc.outputs.is_rc == 1
+        # if: steps.is_rc.outputs.is_rc == 1
         # Pinned to v3 because of https://github.com/actions/download-artifact/issues/249
         uses: actions/upload-artifact@v3
         with:
@@ -291,7 +291,7 @@ jobs:
         name: wheelhouse-${{ matrix.os_python.os }}${{ (matrix.arch == 'aarch64' && '-aarch64') || '' }}
         path: apache-beam-source/wheelhouse/
     - name: Build RC wheels
-      if: ${{ needs.build_source.outputs.is_rc == 1 }}
+      # if: ${{ needs.build_source.outputs.is_rc == 1 }}
       working-directory: apache-beam-source-rc
       env:
         CIBW_BUILD: ${{ matrix.os_python.python }}
@@ -302,7 +302,7 @@ jobs:
       run: cibuildwheel --print-build-identifiers && cibuildwheel --output-dir wheelhouse
       shell: bash
     - name: Add RC checksums
-      if: ${{ needs.build_source.outputs.is_rc == 1 }}
+      # if: ${{ needs.build_source.outputs.is_rc == 1 }}
       working-directory: apache-beam-source-rc/wheelhouse/
       run: |
         for file in *.whl; do
@@ -310,7 +310,7 @@ jobs:
         done
       shell: bash
     - name: Upload RC wheels as artifacts
-      if: ${{ needs.build_source.outputs.is_rc == 1 }}
+      # if: ${{ needs.build_source.outputs.is_rc == 1 }}
       # Pinned to v3 because of https://github.com/actions/download-artifact/issues/249
       uses: actions/upload-artifact@v3
       with:
